@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "chart.js": "registry:npm/chart.js#2.1.4+20160615174920"
+  },
+  "devDependencies": {},
+  "globalDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "stamplay-js-sdk": "registry:dt/stamplay-js-sdk#1.2.9+20160317120654"
+  }
+}

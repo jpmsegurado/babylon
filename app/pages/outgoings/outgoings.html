@@ -1,0 +1,42 @@
+<!--
+  Generated template for the OutgoingsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar vermelho>
+    <ion-title>Despesas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="outgoings">
+  <div class="subheader" >
+    <h2>{{getLabel(month, year, actualYear)}}</h2>
+    <button vermelho (click)="subtractMonth()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </button>
+    <button vermelho (click)="addMonth()">
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </button>
+  </div>
+  <div class="content">
+    <ion-list *ngIf="getFilteredOutgoings(outgoings, date, month, year, actualYear ).length > 0">
+      <ion-item *ngFor="let outgoing of getFilteredOutgoings(outgoings, date, month, year, actualYear)">
+        <h2>{{outgoing.descricao}} - R${{outgoing.valor}}</h2>
+      </ion-item>
+    </ion-list>
+
+    <div class="no-results" *ngIf="getFilteredOutgoings(outgoings, date, month, year, actualYear ).length == 0">
+      <h4 class="text-center">Não há despesas neste mês.</h4>
+    </div>
+
+    <button fab-bottom fab-right fab-fixed round darkred (click)="add()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+
+  </div>
+</ion-content>

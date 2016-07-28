@@ -1,0 +1,54 @@
+.outgoings {
+  .subheader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: color($colors, vermelho, base);
+    color: color($colors, vermelho, contrast);
+
+    button:first-of-type{
+      color: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      margin: auto;
+      box-shadow: none;
+    }
+    button:last-of-type{
+      color: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 20px;
+      margin: auto;
+      box-shadow: none;
+    }
+
+    h2{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 30px;
+      text-align: center;
+    }
+  }
+
+  .content{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  button[round]{
+    height: 40px;
+    width: 40px;
+  }
+}

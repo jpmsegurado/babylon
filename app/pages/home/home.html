@@ -1,0 +1,104 @@
+<ion-header no-border>
+  <ion-navbar verde>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="home" verde>
+  <div class="total-income">
+    <h4 class="text-center">Total líquido</h4>
+    <h1 class="text-center">
+      R$ 1500,00
+    </h1>
+
+    <ion-row>
+      <ion-col width-50 class="text-right">
+        <p>
+          A ser guardado
+        </p>
+        <h4>R$ 500, 00</h4>
+      </ion-col>
+      <ion-col width-50 class="text-left">
+        <p>
+          A ser Investido
+        </p>
+        <h4>R$ 500, 00</h4>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="spendings">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pizza" item-left></ion-icon>
+        <h2>R$ 35,00 - 25/09/2016</h2>
+        <p>Pizza hut</p>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="fab-list" *ngIf="hideList">
+    <div class="fab-container">
+      <ion-list>
+
+        <ion-item>
+          <ion-badge dark item-left>Listar receita</ion-badge>
+          <button verde fab item-right (click)="openAddIncome()">
+            <ion-icon name="logo-usd"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-item>
+          <ion-badge dark item-left>Listar despesas</ion-badge>
+          <button vermelho fab item-right (click)="openAddOutgoing()">
+            <ion-icon name="document"></ion-icon>
+          </button>
+        </ion-item>
+
+      </ion-list>
+
+    </div>
+  </div>
+  <button fab-bottom fab-right fab-fixed round verde (click)="showList()">
+    <ion-icon *ngIf="!hideList" name="add"></ion-icon>
+    <ion-icon *ngIf="hideList" name="close"></ion-icon>
+  </button>
+
+</ion-content>

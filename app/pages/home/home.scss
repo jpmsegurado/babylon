@@ -1,0 +1,93 @@
+.home {
+  .total-income{
+    height: 200px;
+    background-color: color($colors, verde, base);
+    color: color($colors, verde, contrast);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+  }
+  .spendings{
+    position: absolute;
+    top: 200px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
+
+
+  ion-avatar{
+    text-align: center;
+    font-size: 25px;
+  }
+
+  ion-col{
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  ion-row{
+    margin-top: 25px;
+  }
+
+  ion-col * {
+    margin: 3px;
+    color: color($colors, light);
+  }
+
+  ion-col:first-of-type{
+    border-right: solid 1px color($colors, light);
+  }
+  ion-col:last-of-type{
+    border-left: solid 1px color($colors, light);
+  }
+
+  .fab-list{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  button[round]{
+    height: 40px;
+    width: 40px;
+  }
+
+  .fab-container{
+    position: absolute;
+    height: 200px;
+    bottom: 72px;
+    left: 0;
+    right: 0;
+
+    ion-list{
+      background-color: transparent;
+      border: 0;
+      right: 12px;
+      bottom: 0;
+      width: 180px;
+      position: absolute;;
+    }
+
+    ion-list *{
+      border: 0;
+    }
+
+    ion-item{
+      background-color: transparent;
+      border: 0;
+      button{
+        right: 3px;
+        height: 30px;
+        width: 30px;
+        top: -2px;
+      }
+    }
+  }
+
+
+}

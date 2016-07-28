@@ -1,0 +1,50 @@
+<!--
+  Generated template for the AddOutgoingPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar vermelho>
+    <ion-title>Nova despesa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="add-outgoing">
+  <form [ngFormModel]="outgoing" (submit)="salvar(outgoing)">
+    <ion-list>
+      <ion-item class="data" (click)="pickDate(data)" >
+        <span>Data</span>
+        <span>{{data}}</span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select ngControl="tipo">
+          <ion-option value="0">Educação</ion-option>
+          <ion-option value="1">Transporte</ion-option>
+          <ion-option value="2">Moradia</ion-option>
+          <ion-option value="3">Vestimenta</ion-option>
+          <ion-option value="4">Saúde</ion-option>
+          <ion-option value="5">Alimentação</ion-option>
+          <ion-option value="6">Outros</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Valor</ion-label>
+        <ion-input type="number" ngControl="valor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Desricao</ion-label>
+        <ion-input type="text" ngControl="descricao"></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <div padding>
+    <button full darkred type="submit" (click)="salvar(outgoing)">Adicionar</button>
+  </div>
+
+</ion-content>

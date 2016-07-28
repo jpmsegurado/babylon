@@ -1,0 +1,17 @@
+.add-outgoing {
+
+  ion-item ion-input * {
+    text-align: right;
+  }
+  ion-item.data{
+
+    span:first-of-type{
+      color: #999;
+    }
+    span:last-of-type{
+      min-width: 100px;
+      height: 19px;
+      float: right;
+    }
+  }
+}

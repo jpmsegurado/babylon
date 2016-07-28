@@ -1,0 +1,46 @@
+<!--
+  Generated template for the AddIncomePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar verde>
+    <ion-title>Nova receita</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="add-income">
+
+  <form [ngFormModel]="income" (submit)="salvar(income)">
+    <ion-list>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select ngControl="tipo">
+          <ion-option value="0">Fixa/Mensal (Ex: salário.)</ion-option>
+          <ion-option value="1">Não fixa (Ex: freelance.)</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="income.value.tipo == 1">
+        <ion-label>Data</ion-label>
+        <ion-datetime type="date" displayFormat="MM/DD/YYYY" ngControl="data"  min="1990-01"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Valor</ion-label>
+        <ion-input type="number" ngControl="valor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descrição</ion-label>
+        <ion-input type="text" ngControl="descricao"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button full darkgreen type="submit">Adicionar</button>
+    </div>
+  </form>
+
+</ion-content>
