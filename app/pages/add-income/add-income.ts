@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, Control, ControlGroup } from '@angular/common';
 import { NavController, Alert } from 'ionic-angular';
 import { Income } from '../../providers/income/income';
+import * as _ from 'lodash';
 
 /*
   Generated class for the AddIncomePage page.
@@ -44,6 +45,8 @@ export class AddIncomePage {
       console.log(msg);
       return this.showBasicAlert(msg);
     }
+
+
 
     this.IncomeService.add(income.value).subscribe((res) => {
       this.nav.pop();

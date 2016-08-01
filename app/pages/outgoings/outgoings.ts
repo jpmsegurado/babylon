@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Alert } from 'ionic-angular';
 import moment from '../../providers/moment/moment';
 import { AddOutgoingPage } from '../add-outgoing/add-outgoing';
 import { Outgoing } from '../../providers/outgoing/outgoing';
@@ -38,7 +38,6 @@ export class OutgoingsPage {
     this.zone.run(() => {
       this.OutgoingService.getAll().subscribe((res) => {
         this.outgoings = res;
-        console.log(res);
       });
     });
   }
@@ -55,6 +54,24 @@ export class OutgoingsPage {
     });
 
     return array;
+  }
+
+  deleteOutgoing(outgoing){
+    let alert = Alert.create({
+      subTitle: `Deseja deletar ${outgoing.descricao}?`,
+      buttons: [{
+        text: 'sim',
+        handler: () => {
+          console.log(outgoing);
+          this.OutgoingService.delete(outgoing).subscribe(() => {
+            this.init();
+          });
+        }
+      }, {
+        text: 'não'
+      }]
+    });
+    this.nav.present(alert);
   }
 
   getLabel(month, year, actualYear){

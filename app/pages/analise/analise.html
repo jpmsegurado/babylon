@@ -1,0 +1,34 @@
+
+<ion-header>
+
+  <ion-navbar azul>
+    <ion-title>Análise do mês</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="analise">
+  <chart  incomes="{{incomes}}" outgoings="{{outgoings}}"
+          investiments="{{investiments}}" keepings="{{keepings}}" rest="{{rest}}" fun="{{fun}}"></chart>
+
+  <ion-list>
+    <ion-item outgoings>
+      <h2>Despesas - R${{outgoings}},00</h2>
+    </ion-item>
+    <ion-item fun>
+      <h2>Ao lazer - R${{fun}},00</h2>
+    </ion-item>
+    <ion-item keepings>
+      <h2>À ser guardado - R${{keepings}},00</h2>
+    </ion-item>
+    <ion-item investiments>
+      <h2>Invista em você - R${{investiments}},00</h2>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button full azul>entenda mais</button>
+  </div>
+
+</ion-content>

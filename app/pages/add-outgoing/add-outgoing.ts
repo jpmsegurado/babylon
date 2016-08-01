@@ -4,6 +4,7 @@ import { NavController, Platform, Alert } from 'ionic-angular';
 import { DatePicker } from 'ionic-native';
 import { Outgoing } from '../../providers/outgoing/outgoing';
 import moment from '../../providers/moment/moment';
+import * as _ from 'lodash';
 
 /*
   Generated class for the AddOutgoingPage page.
@@ -27,6 +28,7 @@ export class AddOutgoingPage {
     this.outgoing = new ControlGroup({
       descricao: new Control('', Validators.required),
       valor: new Control('', Validators.required),
+      data: new Control('', Validators.required),
       tipo: new Control(0, Validators.required)
     });
   }
@@ -34,7 +36,8 @@ export class AddOutgoingPage {
   pickDate(data){
     console.log(window['cordova']);
     if(!window['cordova']){
-      this.data = moment(new Date()).format('DD/MM/YYYY');
+      // this.data = moment(new Date()).format('DD/MM/YYYY');
+      this.data = moment(new Date('2016-07-28')).format('DD/MM/YYYY');
       return;
     }
     DatePicker.show({

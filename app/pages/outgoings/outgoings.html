@@ -25,8 +25,8 @@
   </div>
   <div class="content">
     <ion-list *ngIf="getFilteredOutgoings(outgoings, date, month, year, actualYear ).length > 0">
-      <ion-item *ngFor="let outgoing of getFilteredOutgoings(outgoings, date, month, year, actualYear)">
-        <h2>{{outgoing.descricao}} - R${{outgoing.valor}}</h2>
+      <ion-item *ngFor="let outgoing of getFilteredOutgoings(outgoings, date, month, year, actualYear)" (click)="deleteOutgoing(outgoing)">
+        <h2>{{outgoing.descricao}} - R${{outgoing.valor}},00</h2>
       </ion-item>
     </ion-list>
 

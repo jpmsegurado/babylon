@@ -38,7 +38,6 @@ export class IncomesPage {
     this.IncomeService.getAll().subscribe((res) => {
       this.zone.run(() => {
         this.incomes = res;
-        console.log(res);
       });
     });
   }
@@ -75,7 +74,7 @@ export class IncomesPage {
   getFilteredIncomes(incomes, date, month, year, actualYear){
     let array = [];
     array = incomes.filter((item) => {
-      let mDate = moment(item.date);
+      let mDate = moment(item.data, 'YYYY-MM-DD');
       if((mDate.month() == date.month() && mDate.year() == date.year() || item.tipo == 0)){
         return true;
       }else{

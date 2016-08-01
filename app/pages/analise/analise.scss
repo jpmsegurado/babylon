@@ -1,0 +1,29 @@
+.analise-page{
+  scroll-content{
+    margin-top: 0 !important;
+  }
+}
+
+.analise {
+  chart{
+    padding: 10px;
+  }
+
+  ion-item[fun]{
+    border-left: solid 6px color($colors, fun);
+  }
+  ion-item[outgoings]{
+    border-left: solid 6px color($colors, outgoings);
+  }
+  ion-item[keepings]{
+    border-left: solid 6px color($colors, keepings);
+  }
+  ion-item[investiments]{
+    border-left: solid 6px color($colors, investiments);
+  }
+
+  ion-item{
+    box-sizing: border-box;
+  }
+
+}

@@ -1,0 +1,45 @@
+
+.intro-page{
+  ion-header{
+    display: none;
+  }
+
+  scroll-content{
+    margin-top: 0 !important;
+  }
+}
+.intro {
+
+  ion-icon{
+    font-size: 70px;
+  }
+
+
+  ion-slide:last-of-type{
+    background: color($colors, investiments);
+  }
+  ion-slide{
+    background-size: 100%;
+    background-position: center;
+
+    h4{
+      position: absolute;
+      top: 46px;
+      left: 0;
+      right: 0;
+    }
+
+  }
+
+  .image{
+    background-position: top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 126px;
+    left: 30px;
+    right: 30px;
+    bottom: 55px;
+  }
+
+}

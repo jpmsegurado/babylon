@@ -27,7 +27,7 @@
   <div class="content">
     <ion-list *ngIf="getFilteredIncomes(incomes, date, month, year, actualYear ).length > 0">
       <ion-item *ngFor="let income of getFilteredIncomes(incomes, date, month, year, actualYear )" (click)="deleteIncome(income)">
-        <h2>{{income.descricao ? income.descricao : 'Sem descrição'}} - {{income.valor}}</h2>
+        <h2>{{income.descricao ? income.descricao : 'Sem descrição'}} - R${{income.valor}},00</h2>
       </ion-item>
     </ion-list>
 

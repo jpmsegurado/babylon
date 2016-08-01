@@ -1,19 +1,92 @@
+
+.home-page{
+  ion-header{
+    display: none;
+  }
+
+  scroll-content{
+    margin-top: 0 !important;
+  }
+}
 .home {
   .total-income{
-    height: 200px;
-    background-color: color($colors, verde, base);
-    color: color($colors, verde, contrast);
+    height: 250px;
+    background-color: color($colors, fun, base);
+    color: color($colors, white);
     position: absolute;
     top: 0px;
     left: 0px;
     right: 0px;
+    h4.text-center{
+      margin-top: 50px;
+    }
   }
-  .spendings{
+
+  .menu{
     position: absolute;
-    top: 200px;
+    top: 250px;
     bottom: 0px;
     left: 0px;
     right: 0px;
+    overflow: hidden;
+  }
+  .item-menu.incomes{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+  }
+  .item-menu.spendings{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+  }
+  .item-menu.analysis{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 50%;
+    height: 50%;
+  }
+  .item-menu.config{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+  }
+
+
+  .item-menu p{
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 80px;
+    height: 16px;
+    margin: auto;
+  }
+  .item-menu{
+    text-align: center;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+  }
+  .item-menu ion-icon{
+    font-size: 70px;
+    padding: 0;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 70px;
+    margin: auto;
   }
 
 
@@ -33,23 +106,30 @@
 
   ion-col * {
     margin: 3px;
-    color: color($colors, light);
+    color: color($colors, white);
   }
 
   ion-col:first-of-type{
-    border-right: solid 1px color($colors, light);
+    border-right: solid 1px color($colors, white);
   }
   ion-col:last-of-type{
-    border-left: solid 1px color($colors, light);
+    border-left: solid 1px color($colors, white);
   }
 
   .fab-list{
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
     right: 0;
+    left: 0;
     background-color: rgba(0, 0, 0, 0.3);
+    .shadow{
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
   }
 
   button[round]{
@@ -60,16 +140,15 @@
   .fab-container{
     position: absolute;
     height: 200px;
-    bottom: 72px;
-    left: 0;
+    bottom: 47px;
     right: 0;
 
     ion-list{
       background-color: transparent;
       border: 0;
-      right: 12px;
+      right: 9px;
       bottom: 0;
-      width: 180px;
+      width: 200px;
       position: absolute;;
     }
 
@@ -77,14 +156,30 @@
       border: 0;
     }
 
+    ion-item *{
+
+    }
     ion-item{
       background-color: transparent;
       border: 0;
+      ion-label{
+        margin: 0;
+        height: 60px;
+        * {
+          float: right;
+        }
+        ion-badge{
+          margin-top: 15px;
+        }
+      }
       button{
-        right: 3px;
-        height: 30px;
-        width: 30px;
-        top: -2px;
+        position: initial;
+        margin-left: 10px;
+        height: 40px;
+        width: 40px;
+        ion-button-effect{
+          display: none !important;
+        }
       }
     }
   }

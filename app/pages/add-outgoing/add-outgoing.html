@@ -16,9 +16,9 @@
 <ion-content class="add-outgoing">
   <form [ngFormModel]="outgoing" (submit)="salvar(outgoing)">
     <ion-list>
-      <ion-item class="data" (click)="pickDate(data)" >
-        <span>Data</span>
-        <span>{{data}}</span>
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-input type="date" ngControl="data"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Categoria</ion-label>

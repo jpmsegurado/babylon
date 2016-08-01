@@ -12,6 +12,8 @@
 @import "../pages/add-income/add-income";
 @import "../pages/add-outgoing/add-outgoing";
 @import "../pages/outgoings/outgoings";
+@import "../pages/analise/analise";
+@import "../pages/intro/intro";
 
 
 .text-center{
@@ -22,4 +24,8 @@
 }
 .text-right{
   text-align: right;
+}
+
+ion-page scroll-content{
+  margin-top: 0 !important;
 }
