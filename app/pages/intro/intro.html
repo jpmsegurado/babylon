@@ -32,7 +32,10 @@
         Tudo certo? vamos lá!
       </p>
 
-      <button white (click)="entrar()">entrar</button>
+      <button facebook (click)="entrar()" [disabled]="loading">
+        Entrar com facebook
+        <ion-spinner *ngIf="loading"></ion-spinner>
+      </button>
 
     </ion-slide>
 

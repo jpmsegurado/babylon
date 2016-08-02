@@ -18,6 +18,7 @@ import * as _ from 'lodash';
 export class AddOutgoingPage {
   private outgoing: any;
   private data: any;
+  private loading: any = false;
   constructor(
     private nav: NavController,
     private platform: Platform,
@@ -74,28 +75,32 @@ export class AddOutgoingPage {
   }
 
   salvar(outgoing: any){
-    if(!outgoing.valid){
-      let names: any = [];
-      for(let item in outgoing.controls){
-        if(!outgoing.controls[item].valid){
-          names.push(`'${item}'`);
+    try{
+      if(!outgoing.valid){
+        let names: any = [];
+        for(let item in outgoing.controls){
+          if(!outgoing.controls[item].valid){
+            names.push(`'${item}'`);
+          }
         }
+
+        names = names.join(',');
+
+        let msg = `Por favor preencha os campos ${names} corretamente`;
+        console.log(names);
+        console.log(msg);
+        return this.showBasicAlert(msg);
       }
 
-      names = names.join(',');
-
-      let msg = `Por favor preencha os campos ${names} corretamente`;
-      console.log(names);
-      console.log(msg);
-      return this.showBasicAlert(msg);
-    }
-
-    try{
+      this.loading = true;
       this.OutgoingService.add(outgoing.value).subscribe((res) => {
         this.nav.pop();
+        this.loading = false;
+      }, () => {
+        this.loading = false;
       });
     }catch(e){
-      console.log(e);
+      this.loading = false;
     }
   }
 

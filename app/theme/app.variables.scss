@@ -29,9 +29,13 @@ $colors: (
   primary:    #387ef5,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #ececec,
+  light:      #ededed,
   transparent: transparent,
   dark:       #222,
+  darkbar:       (
+    base: #222,
+    contrast: #fff
+  ),
   azul: (
     base: #0358E8,
     contrast: #fff
@@ -51,6 +55,10 @@ $colors: (
   darkgreen: (
     base: darken(#22B215, 10%),
     contrast: #fff
+  ),
+  facebook: (
+    base: #fff,
+    contrast: #3b5998
   ),
   incomes: #22B215,
   keepings: #02E87E,

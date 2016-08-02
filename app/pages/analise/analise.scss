@@ -9,6 +9,12 @@
     padding: 10px;
   }
 
+  ion-list, ion-item{
+    background-color: color($colors, light);
+  }
+
+  background-color: color($colors, light);
+
   ion-item[fun]{
     border-left: solid 6px color($colors, fun);
   }

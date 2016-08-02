@@ -6,7 +6,9 @@ import { IntroPage } from './pages/intro/intro';
 import * as Chart from 'chart.js';
 import  pouch from './providers/pouchdb/pouchdb';
 import { Income } from './providers/income/income';
+import { Firebase } from './providers/firebase/firebase';
 import { Outgoing } from './providers/outgoing/outgoing';
+import { User } from './providers/user/user';
 
 enableProdMode();
 
@@ -25,4 +27,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [Income, Outgoing]);
+ionicBootstrap(MyApp, [Income, Outgoing, Firebase, User]);

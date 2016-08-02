@@ -14,6 +14,13 @@
 
 
 <ion-content class="outgoings">
+
+  <div class="loading-container" *ngIf="deleting">
+    <div class="loading">
+      <ion-spinner></ion-spinner>
+    </div>
+  </div>
+
   <div class="subheader" >
     <h2>{{getLabel(month, year, actualYear)}}</h2>
     <button vermelho (click)="subtractMonth()">
@@ -26,7 +33,9 @@
   <div class="content">
     <ion-list *ngIf="getFilteredOutgoings(outgoings, date, month, year, actualYear ).length > 0">
       <ion-item *ngFor="let outgoing of getFilteredOutgoings(outgoings, date, month, year, actualYear)" (click)="deleteOutgoing(outgoing)">
+        <ion-icon item-left [name]="getIcon(outgoing)"></ion-icon>
         <h2>{{outgoing.descricao}} - R${{outgoing.valor}},00</h2>
+        <p>{{formatData(outgoing.data)}}</p>
       </ion-item>
     </ion-list>
 

@@ -15,6 +15,7 @@ import * as _ from 'lodash';
 })
 export class AddIncomePage {
   private income: any;
+  private loading: any = false;
   constructor(
     private nav: NavController,
     private fb: FormBuilder,
@@ -46,10 +47,12 @@ export class AddIncomePage {
       return this.showBasicAlert(msg);
     }
 
-
-
+    this.loading = true;
     this.IncomeService.add(income.value).subscribe((res) => {
       this.nav.pop();
+      this.loading = false;
+    }, () => {
+      this.loading = false;
     });
 
   }

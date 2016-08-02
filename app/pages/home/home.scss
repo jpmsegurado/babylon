@@ -18,11 +18,12 @@
     left: 0px;
     right: 0px;
     h4.text-center{
-      margin-top: 50px;
+      margin-top: 60px;
     }
   }
 
   .menu{
+    background-color: color($colors, light);
     position: absolute;
     top: 250px;
     bottom: 0px;
@@ -101,7 +102,8 @@
   }
 
   ion-row{
-    margin-top: 25px;
+    margin-top: 30px;
+    font-size: 19px;
   }
 
   ion-col * {
@@ -135,6 +137,10 @@
   button[round]{
     height: 40px;
     width: 40px;
+  }
+
+  button[white]{
+    background-color: transparent;
   }
 
   .fab-container{

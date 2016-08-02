@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {ChartComponent} from '../../components/chart/chart';
+import { HistoryPage } from '../history/history';
 
 /*
   Generated class for the AnalisePage page.
@@ -28,9 +29,12 @@ export class AnalisePage {
     this.investiments = params.get('investiments');
     this.keepings = params.get('keepings');
     this.rest = params.get('rest');
-    this.fun = (this.incomes - this.outgoings - this.keepings - this.investiments );
-    this.fun = this.fun < 0 ? 0 : this.fun;
+    this.fun = params.get('fun');
 
+  }
+
+  openHistory(){
+    this.nav.push(HistoryPage);
   }
 
 }

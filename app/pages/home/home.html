@@ -4,55 +4,46 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="home" hide-nav-bar>
+
+  <!-- <div class="loading-container" *ngIf="loading">
+    <div class="loading">
+      <ion-spinner></ion-spinner>
+    </div>
+  </div> -->
   <div class="total-income">
-    <h4 class="text-center">Total de receitas do mês</h4>
-    <h1 class="text-center">
+    <h4 class="text-center">Informações de {{getLabel(month)}}</h4>
+    <!-- <h1 class="text-center">
       R$ {{incomes}},00
-    </h1>
+    </h1> -->
 
     <ion-row>
       <ion-col width-50 class="text-right">
         <p>
-          A ser guardado
+          Receitas
         </p>
-        <h4>R$ {{canSaveAndInvest(rest) ? getKeepings(rest) : 0}},00</h4>
+        <h4 *ngIf="!loading">R$ {{incomes}},00</h4>
+        <h4 *ngIf="loading">...</h4>
       </ion-col>
       <ion-col width-50 class="text-left">
         <p>
-          Invista em você
+          Despesas
         </p>
-        <h4>R$ {{canSaveAndInvest(rest) ? getInvestiments(rest) : 0}},00</h4>
+        <h4 *ngIf="!loading">R$ {{outgoings}},00</h4>
+        <h4 *ngIf="loading">...</h4>
       </ion-col>
     </ion-row>
   </div>
-  <!-- <div class="spendings">
-    <div *ngIf="!!outgoingsList">
-      <h3 *ngIf="outgoingsList.length == 0">Nenhum gasto recente</h3>
-    </div>
-    <div *ngIf="outgoingsList.length > 0">
-      <h3>Alguns gastos recentes...</h3>
-      <ion-list>
-
-        <ion-item *ngFor="let outgoing of outgoingsList.slice(0,4)">
-          <ion-icon [name]="getIcon(outgoing)" item-left></ion-icon>
-          <h2>R$ {{outgoing.valor}} - {{outgoing.data}}</h2>
-          <p>{{outgoing.descricao}}</p>
-        </ion-item>
-
-      </ion-list>
-    </div>
-  </div> -->
 
   <div class="menu">
 
     <button class="item-menu incomes" white (click)="openAddIncome()">
       <ion-icon incomes name="logo-usd"></ion-icon>
-      <p >Receitas</p>
+      <p >Ver minhas receitas</p>
     </button>
 
     <button class="item-menu spendings" white (click)="openAddOutgoing()">
       <ion-icon name="ios-card" outgoings></ion-icon>
-      <p>Despesas</p>
+      <p>Ver minhas despesas</p>
     </button>
 
     <button class="item-menu analysis" white (click)="openAnalysis(incomes, outgoings, rest)">
@@ -60,7 +51,7 @@
       <p>Análise do mês</p>
     </button>
 
-    <button class="item-menu config" white>
+    <button class="item-menu config" white (click)="openConfig()">
       <ion-icon name="cog" dark></ion-icon>
       <p>Configurações</p>
     </button>
@@ -68,37 +59,6 @@
 
   </div>
 
-  <!-- <div class="fab-list" *ngIf="hideList">
-    <div class="shadow" (click)="showList()"></div>
-    <div class="fab-container">
-      <ion-list>
 
-        <ion-item (click)="openAnalysis(incomes, outgoings, rest)">
-          <button azul fab>
-            <ion-icon name="stats"></ion-icon>
-          </button>
-          <ion-badge dark >Análises do mês</ion-badge>
-        </ion-item>
-        <ion-item (click)="openAddIncome()">
-          <button verde fab>
-            <ion-icon name="logo-usd"></ion-icon>
-          </button>
-          <ion-badge dark >Listar receita</ion-badge>
-        </ion-item>
-        <ion-item (click)="openAddOutgoing()">
-          <button vermelho fab>
-            <ion-icon name="document"></ion-icon>
-          </button>
-          <ion-badge dark>Listar despesas</ion-badge>
-        </ion-item>
-
-      </ion-list>
-
-    </div>
-  </div> -->
-  <!-- <button fab-bottom fab-right fab-fixed round azul (click)="showList()">
-    <ion-icon *ngIf="!hideList" name="add"></ion-icon>
-    <ion-icon *ngIf="hideList" name="close"></ion-icon>
-  </button> -->
 
 </ion-content>

@@ -1,5 +1,9 @@
 .add-income {
+  background-color: color($colors, light);
   ion-input *{
     text-align: right;
+  }
+  ion-list, ion-item{
+    background-color: color($colors, light);
   }
 }

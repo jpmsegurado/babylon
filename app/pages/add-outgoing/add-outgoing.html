@@ -41,10 +41,14 @@
         <ion-input type="text" ngControl="descricao"></ion-input>
       </ion-item>
     </ion-list>
+    
+    <div padding>
+      <button full darkred type="submit" [disabled]="loading">
+        Adicionar
+        <ion-spinner *ngIf="loading"></ion-spinner>
+      </button>
+    </div>
   </form>
 
-  <div padding>
-    <button full darkred type="submit" (click)="salvar(outgoing)">Adicionar</button>
-  </div>
 
 </ion-content>

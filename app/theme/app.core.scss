@@ -14,6 +14,7 @@
 @import "../pages/outgoings/outgoings";
 @import "../pages/analise/analise";
 @import "../pages/intro/intro";
+@import "../pages/history/history";
 
 
 .text-center{
@@ -28,4 +29,36 @@
 
 ion-page scroll-content{
   margin-top: 0 !important;
+}
+
+.loading{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  margin: auto;
+  text-align: center;
+}
+.loading-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+ion-list > .item:last-child, ion-list > .item-wrapper:last-child .item {
+    border-bottom: 1px solid #ccc;
+}
+ion-list > .item:first-child, ion-list > .item-wrapper:first-child .item {
+    border-top: 1px solid #ccc;
+}
+
+ion-list .item-inner {
+    border-bottom: 1px solid #ccc;
 }

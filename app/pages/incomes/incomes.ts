@@ -19,6 +19,7 @@ export class IncomesPage {
   private year: Number;
   private date: any;
   private incomes: Array<any> = [];
+  private deleting: any = false;
   constructor(
     private nav: NavController,
     private IncomeService: Income,
@@ -32,6 +33,15 @@ export class IncomesPage {
 
   ngOnInit(){
     this.init();
+  }
+
+  formatData(item){
+    if(item.tipo == 0){
+      return 'Fixo/Mensal';
+    }else{
+      let date = moment(item.data, 'YYYY-MM-DD');
+      return date.format('DD/MM/YYYY');
+    }
   }
 
   init(){
@@ -60,8 +70,12 @@ export class IncomesPage {
       buttons: [{
         text: 'sim',
         handler: () => {
+          this.deleting = true;
           this.IncomeService.delete(income).subscribe(() => {
             this.init();
+            this.zone.run(() => {
+              this.deleting = false;
+            });
           });
         }
       }, {

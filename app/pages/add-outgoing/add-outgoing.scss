@@ -1,5 +1,5 @@
 .add-outgoing {
-
+  background-color: color($colors, light);
   ion-item ion-input * {
     text-align: right;
   }
@@ -13,5 +13,9 @@
       height: 19px;
       float: right;
     }
+  }
+
+  ion-list, ion-item{
+    background-color: color($colors, light);
   }
 }

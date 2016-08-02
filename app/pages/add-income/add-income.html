@@ -39,7 +39,10 @@
     </ion-list>
 
     <div padding>
-      <button full darkgreen type="submit">Adicionar</button>
+      <button full darkgreen type="submit" [disabled]="loading">
+        Adicionar
+        <ion-spinner *ngIf="loading"></ion-spinner>
+      </button>
     </div>
   </form>
 

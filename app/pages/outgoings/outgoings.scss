@@ -5,6 +5,10 @@
 }
 
 .outgoings {
+  background-color: color($colors, light);
+  ion-list, ion-item{
+    background-color: color($colors, light);
+  }
   .subheader{
     position: absolute;
     top: 0;

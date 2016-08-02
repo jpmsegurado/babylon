@@ -18,6 +18,7 @@ export class OutgoingsPage {
   private actualYear: Number;
   private year: Number;
   private date: any;
+  private deleting: any = false;
   private outgoings: any = [];
   constructor(
     private nav: NavController,
@@ -45,7 +46,7 @@ export class OutgoingsPage {
   getFilteredOutgoings(outgoings, date, month, year, actualYear){
     let array = [];
     array = outgoings.filter((item) => {
-      let mDate = moment(item.date);
+      let mDate = moment(item.data);
       if((mDate.month() == date.month() && mDate.year() == date.year())){
         return true;
       }else{
@@ -63,8 +64,12 @@ export class OutgoingsPage {
         text: 'sim',
         handler: () => {
           console.log(outgoing);
+          this.deleting = true;
           this.OutgoingService.delete(outgoing).subscribe(() => {
             this.init();
+            this.zone.run(() => {
+              this.deleting = false;
+            });
           });
         }
       }, {
@@ -94,6 +99,30 @@ export class OutgoingsPage {
 
   add(){
     this.nav.push(AddOutgoingPage)
+  }
+
+  formatData(data){
+    let date = moment(data, 'YYYY-MM-DD');
+    return date.format('DD/MM/YYYY');
+  }
+
+  getIcon(outgoing){
+    switch(parseInt(outgoing.tipo)){
+      case 0:
+        return 'create';
+      case 1:
+        return 'bus';
+      case 2:
+        return 'home';
+      case 3:
+        return 'body';
+      case 4:
+        return 'medkit';
+      case 5:
+        return 'pizza';
+      case 6:
+        return 'more';
+    }
   }
 
 }
