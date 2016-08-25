@@ -13,7 +13,7 @@
   <div class="total-income">
     <h4 class="text-center">Informações de {{getLabel(month)}}</h4>
     <!-- <h1 class="text-center">
-      R$ {{incomes}},00
+      R$ {{incomes}}
     </h1> -->
 
     <ion-row>
@@ -21,14 +21,14 @@
         <p>
           Receitas
         </p>
-        <h4 *ngIf="!loading">R$ {{incomes}},00</h4>
+        <h4 *ngIf="!loading">R$ {{accounting.formatMoney(incomes, "", 2, ".", ",")}}</h4>
         <h4 *ngIf="loading">...</h4>
       </ion-col>
       <ion-col width-50 class="text-left">
         <p>
           Despesas
         </p>
-        <h4 *ngIf="!loading">R$ {{outgoings}},00</h4>
+        <h4 *ngIf="!loading">R$ {{accounting.formatMoney(outgoings, "", 2, ".", ",")}}</h4>
         <h4 *ngIf="loading">...</h4>
       </ion-col>
     </ion-row>
@@ -38,12 +38,12 @@
 
     <button class="item-menu incomes" white (click)="openAddIncome()">
       <ion-icon incomes name="logo-usd"></ion-icon>
-      <p >Ver minhas receitas</p>
+      <p >Minhas receitas</p>
     </button>
 
     <button class="item-menu spendings" white (click)="openAddOutgoing()">
       <ion-icon name="ios-card" outgoings></ion-icon>
-      <p>Ver minhas despesas</p>
+      <p>Minhas despesas</p>
     </button>
 
     <button class="item-menu analysis" white (click)="openAnalysis(incomes, outgoings, rest)">

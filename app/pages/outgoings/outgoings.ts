@@ -3,6 +3,7 @@ import { NavController, Alert } from 'ionic-angular';
 import moment from '../../providers/moment/moment';
 import { AddOutgoingPage } from '../add-outgoing/add-outgoing';
 import { Outgoing } from '../../providers/outgoing/outgoing';
+import accounting from '../../providers/accounting/accounting';
 
 /*
   Generated class for the OutgoingsPage page.
@@ -17,6 +18,7 @@ export class OutgoingsPage {
   private month: Number;
   private actualYear: Number;
   private year: Number;
+  private accounting: any = accounting;
   private date: any;
   private deleting: any = false;
   private outgoings: any = [];
@@ -31,13 +33,14 @@ export class OutgoingsPage {
     this.actualYear = this.date.year();
   }
 
-  ngOnInit(){
+  ionViewDidEnter(){
     this.init();
   }
 
   init(){
     this.zone.run(() => {
       this.OutgoingService.getAll().subscribe((res) => {
+        console.log(res);
         this.outgoings = res;
       });
     });
@@ -57,7 +60,8 @@ export class OutgoingsPage {
     return array;
   }
 
-  deleteOutgoing(outgoing){
+  deleteOutgoing(outgoing, index){
+    console.log(outgoing);
     let alert = Alert.create({
       subTitle: `Deseja deletar ${outgoing.descricao}?`,
       buttons: [{
@@ -65,10 +69,12 @@ export class OutgoingsPage {
         handler: () => {
           console.log(outgoing);
           this.deleting = true;
-          this.OutgoingService.delete(outgoing).subscribe(() => {
-            this.init();
-            this.zone.run(() => {
-              this.deleting = false;
+          this.OutgoingService.deleteOnline(outgoing).subscribe(() => {
+            this.OutgoingService.deletePouch(outgoing).subscribe(() => {
+              this.init();
+              this.zone.run(() => {
+                this.deleting = false;
+              });
             });
           });
         }

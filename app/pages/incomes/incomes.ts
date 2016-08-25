@@ -3,6 +3,8 @@ import { NavController, Alert } from 'ionic-angular';
 import moment from '../../providers/moment/moment';
 import { AddIncomePage } from '../add-income/add-income';
 import { Income } from '../../providers/income/income';
+import accounting from '../../providers/accounting/accounting';
+import * as _ from 'lodash';
 
 /*
   Generated class for the IncomesPage page.
@@ -15,6 +17,7 @@ import { Income } from '../../providers/income/income';
 })
 export class IncomesPage {
   private month: Number;
+  private accounting: any;
   private actualYear: Number;
   private year: Number;
   private date: any;
@@ -29,9 +32,10 @@ export class IncomesPage {
     this.month = this.date.month();
     this.year = this.date.year();
     this.actualYear = this.date.year();
+    this.accounting = accounting;
   }
 
-  ngOnInit(){
+  ionViewDidEnter(){
     this.init();
   }
 
@@ -46,8 +50,9 @@ export class IncomesPage {
 
   init(){
     this.IncomeService.getAll().subscribe((res) => {
+      console.log(res);
       this.zone.run(() => {
-        this.incomes = res;
+        this.incomes = _.clone(res);
       });
     });
   }

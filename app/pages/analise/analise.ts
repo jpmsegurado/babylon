@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {ChartComponent} from '../../components/chart/chart';
 import { HistoryPage } from '../history/history';
-
+import accounting from '../../providers/accounting/accounting';
 /*
   Generated class for the AnalisePage page.
 
@@ -15,6 +15,7 @@ import { HistoryPage } from '../history/history';
 })
 export class AnalisePage {
   private incomes: any;
+  private accounting: any;
   private outgoings: any;
   private investiments: any;
   private keepings: any;
@@ -30,6 +31,7 @@ export class AnalisePage {
     this.keepings = params.get('keepings');
     this.rest = params.get('rest');
     this.fun = params.get('fun');
+    this.accounting = accounting;
 
   }
 

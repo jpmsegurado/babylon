@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, LocalStorage, Storage } from 'ionic-angular';
+import { IntroPage } from '../intro/intro';
+import { Income } from '../../providers/income/income';
+import { Outgoing } from '../../providers/outgoing/outgoing';
 
 /*
   Generated class for the ConfigPage page.
@@ -14,7 +17,11 @@ export class ConfigPage {
   private local: any;
   private investiments: any;
   private keepings: any;
-  constructor(private nav: NavController) {
+  constructor(
+    private nav: NavController,
+    private IncomeService: Income,
+    private OutgoingService: Outgoing
+  ) {
     this.local = new Storage(LocalStorage);
 
     this.local.get('percentagens').then((result) => {
@@ -49,6 +56,14 @@ export class ConfigPage {
   addInvestiments(){
     this.investiments++;
     this.local.set('percentagens', JSON.stringify({keepings: this.keepings, investiments: this.investiments}));
+  }
+
+  logout(){
+    this.local.set('logged', false).then(() => {
+      this.nav.setRoot(IntroPage, {animate: true});
+      this.IncomeService.deleteAll();
+      this.OutgoingService.deleteAll();
+    });
   }
 
 

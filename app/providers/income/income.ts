@@ -4,7 +4,7 @@ import 'rxjs/add/observable/fromPromise';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import PouchDB from '../pouchdb/pouchdb';
-import _ from '../lodash/lodash';
+import * as _ from 'lodash';
 import {LocalStorage, Storage} from 'ionic-angular';
 
 import { Firebase } from '../firebase/firebase';
@@ -21,12 +21,28 @@ export class Income {
     private firebase: Firebase
   ) {
 
-      this._db = (<any>window).cordova ? new PouchDB('income', {adapter: 'websql'}) : new PouchDB('income');
+      this._db = new PouchDB('income', {adapter: 'websql'});
       // this.removeAll();
       this._results;
 
 
       this.local = new Storage(LocalStorage);
+
+    }
+
+
+    deleteAll(){
+      this._db.allDocs({include_docs: true},(err, docs) => {
+         if (err) {
+            return console.log(err);
+         } else {
+            console.log(docs.rows);
+            docs.rows.forEach((item) => {
+              this.simplyDelete(item.doc);
+              console.log(item.doc);
+            });
+         }
+      });
     }
 
     removeAll(){
@@ -53,6 +69,10 @@ export class Income {
 
     simplyAdd(result){
       return this._db.post(result);
+    }
+
+    simplyDelete(result){
+      this._db.remove(result);
     }
 
     update(result) {
@@ -122,4 +142,4 @@ export class Income {
     }
 
 
-  }
+}

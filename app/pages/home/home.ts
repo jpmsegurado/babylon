@@ -6,6 +6,7 @@ import { IncomesPage } from '../incomes/incomes';
 import { OutgoingsPage } from '../outgoings/outgoings';
 import { AnalisePage } from '../analise/analise';
 import moment from '../../providers/moment/moment';
+import accounting from '../../providers/accounting/accounting';
 import * as _ from 'lodash';
 import { ConfigPage } from '../config/config';
 import * as Chart from 'chart.js';
@@ -26,6 +27,7 @@ export class HomePage {
   private local: any;
   private userID: any;
   private db: any;
+  private accounting: any = accounting;
   private loading: any = false;
   constructor(
     private nav: NavController,
@@ -65,8 +67,8 @@ export class HomePage {
     this.loading = true;
     this.local.get('percentagens').then((result) => {
       if(JSON.parse(result)){
-        this.investiments = parseInt(JSON.parse(result).investiments);
-        this.keepings = parseInt(JSON.parse(result).keepings);
+        this.investiments = parseFloat(JSON.parse(result).investiments);
+        this.keepings = parseFloat(JSON.parse(result).keepings);
       }else{
         this.investiments = 5;
         this.keepings = 10;
@@ -82,7 +84,7 @@ export class HomePage {
     this.IncomeService.getAll().subscribe((res) => {
 
       this.incomes = _.sumBy(this.getFilteredIncomes(res), (item) => {
-        return parseInt(item.valor);
+        return parseFloat(item.valor);
       });
       this.OutgoingService.getAll().subscribe((res) => {
         this.outgoingsList = res;
@@ -90,7 +92,7 @@ export class HomePage {
           return left.data < right.data;
         });
         this.outgoings = _.sumBy(this.getFilteredOutgoings(res), (item) => {
-          return parseInt(item.valor);
+          return parseFloat(item.valor);
         });
 
         this.rest = this.incomes - this.outgoings;
@@ -158,7 +160,9 @@ export class HomePage {
     this.nav.push(IncomesPage);
   }
 
-  openAnalysis(incomes, outgoings, rest){
+  openAnalysis(inc, out, rest){
+    let incomes = parseFloat(inc);
+    let outgoings = parseFloat(out);
     let investiments = this.getInvestiments(incomes);
     let keepings = this.getKeepings(incomes);
     let fun =  rest - investiments - keepings > 0 ? rest - investiments - keepings : 0;
@@ -166,17 +170,14 @@ export class HomePage {
         fun = 0;
         investiments = this.getInvestiments(rest);
         keepings = this.getKeepings(rest);
-        console.log(1);
         fun =  rest - investiments - keepings > 0 ? rest - investiments - keepings : 0;
         if(incomes <= outgoings || incomes < outgoings + investiments + keepings){
             fun = 0;
             investiments = 0;
             keepings = 0;
-            console.log(2);
         }
 
     }else if(incomes < outgoings + investiments + keepings + fun){
-      console.log(3);
       fun = 0;
     }
     this.nav.push(AnalisePage, {incomes: incomes, outgoings: outgoings, investiments: investiments, keepings: keepings, rest: rest, fun: fun});

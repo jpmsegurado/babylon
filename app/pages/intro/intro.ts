@@ -36,7 +36,6 @@ export class IntroPage {
           userID: '1170904116305156'
         }
       }
-
       this.UserService.loadAllFromFirebase(res.authResponse.userID, (arr) => {
         Promise.all(arr).then(() => {
           this.loading = false;

@@ -14,21 +14,21 @@
 
   <ion-list>
     <ion-item outgoings>
-      <h2>Despesas - R${{outgoings}},00</h2>
+      <h2>Despesas - R${{accounting.formatMoney(outgoings, "", 2, ".", ",")}}</h2>
     </ion-item>
     <ion-item fun>
-      <h2>Ao lazer - R${{fun}},00</h2>
+      <h2>Ao lazer - R${{accounting.formatMoney(fun, "", 2, ".", ",")}}</h2>
     </ion-item>
     <ion-item keepings>
-      <h2>À ser guardado - R${{keepings}},00</h2>
+      <h2>À ser guardado - R${{accounting.formatMoney(keepings, "", 2, ".", ",")}}</h2>
     </ion-item>
     <ion-item investiments>
-      <h2>Invista em você - R${{investiments}},00</h2>
+      <h2>Invista em você - R${{accounting.formatMoney(investiments, "", 2, ".", ",")}}</h2>
     </ion-item>
   </ion-list>
 
   <div padding>
-    <button full azul (click)="openHistory()">entenda mais</button>
+    <button full azul (click)="openHistory()">Por quê esses valores?</button>
   </div>
 
 </ion-content>

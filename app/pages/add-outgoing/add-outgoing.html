@@ -32,16 +32,16 @@
           <ion-option value="6">Outros</ion-option>
         </ion-select>
       </ion-item>
-      <ion-item>
+      <ion-item class="valor">
         <ion-label>Valor</ion-label>
-        <ion-input type="number" ngControl="valor"></ion-input>
+        <ion-input type="tel" ngControl="valor" [(ngModel)]="valor" (ngModelChange)="onChange($event)"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Desricao</ion-label>
+        <ion-label>Descrição</ion-label>
         <ion-input type="text" ngControl="descricao"></ion-input>
       </ion-item>
     </ion-list>
-    
+
     <div padding>
       <button full darkred type="submit" [disabled]="loading">
         Adicionar

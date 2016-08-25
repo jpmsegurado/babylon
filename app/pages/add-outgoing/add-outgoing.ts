@@ -1,10 +1,11 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ElementRef } from '@angular/core';
 import { FormBuilder, Validators, ControlGroup, Control } from '@angular/common' ;
 import { NavController, Platform, Alert } from 'ionic-angular';
 import { DatePicker } from 'ionic-native';
 import { Outgoing } from '../../providers/outgoing/outgoing';
 import moment from '../../providers/moment/moment';
 import * as _ from 'lodash';
+import VMasker from '../../providers/vmasker/vmasker';
 
 /*
   Generated class for the AddOutgoingPage page.
@@ -17,6 +18,7 @@ import * as _ from 'lodash';
 })
 export class AddOutgoingPage {
   private outgoing: any;
+  private valor: any;
   private data: any;
   private loading: any = false;
   constructor(
@@ -24,13 +26,26 @@ export class AddOutgoingPage {
     private platform: Platform,
     private OutgoingService: Outgoing,
     private zone: NgZone,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private el: ElementRef
   ) {
     this.outgoing = new ControlGroup({
       descricao: new Control('', Validators.required),
-      valor: new Control('', Validators.required),
+      valor: new Control('0.00', Validators.required),
       data: new Control('', Validators.required),
       tipo: new Control(0, Validators.required)
+    });
+  }
+
+  onChange(e){
+
+  }
+
+  ngOnInit(){
+    VMasker(this.el.nativeElement.querySelector('.valor input')).maskMoney({
+      precision: 2,
+      separator: ',',
+      unit: 'R$'
     });
   }
 
@@ -75,6 +90,7 @@ export class AddOutgoingPage {
   }
 
   salvar(outgoing: any){
+    console.log(outgoing);
     try{
       if(!outgoing.valid){
         let names: any = [];
@@ -93,6 +109,7 @@ export class AddOutgoingPage {
       }
 
       this.loading = true;
+      outgoing.value.valor = (parseFloat(this.valor.slice(3, this.valor.length).replace(',', '.')) * 10).toFixed(2);
       this.OutgoingService.add(outgoing.value).subscribe((res) => {
         this.nav.pop();
         this.loading = false;

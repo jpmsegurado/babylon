@@ -28,9 +28,9 @@
         <ion-label>Data</ion-label>
         <ion-input type="date" ngControl="data"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="valor">
         <ion-label>Valor</ion-label>
-        <ion-input type="number" ngControl="valor"></ion-input>
+        <ion-input type="tel" ngControl="valor" [(ngModel)]="valor" (ngModelChange)="onChange($event)"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Descrição</ion-label>
