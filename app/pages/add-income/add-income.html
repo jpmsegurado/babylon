@@ -8,6 +8,13 @@
 
   <ion-navbar verde>
     <ion-title>Nova receita</ion-title>
+    <ion-buttons end *ngIf="!!params.get('income')">
+      <button (click)="deleteIncome()" [disabled]="deleting">
+        Deletar
+        <ion-spinner *ngIf="deleting"></ion-spinner>
+        <ion-icon *ngIf="!deleting" name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -26,7 +33,7 @@
       </ion-item>
       <ion-item *ngIf="income.value.tipo == 1">
         <ion-label>Data</ion-label>
-        <ion-input type="date" ngControl="data"></ion-input>
+        <ion-datetime pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" ngControl="data"></ion-datetime>
       </ion-item>
       <ion-item class="valor">
         <ion-label>Valor</ion-label>

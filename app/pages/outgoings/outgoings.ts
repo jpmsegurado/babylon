@@ -50,14 +50,27 @@ export class OutgoingsPage {
     let array = [];
     array = outgoings.filter((item) => {
       let mDate = moment(item.data);
-      if((mDate.month() == date.month() && mDate.year() == date.year())){
+      if(((mDate.month()) == (date.month()) && mDate.year() == date.year())){
         return true;
       }else{
-        return false;
+        if( item.tipo != '7'){
+          return false;
+        }else{
+          let mDateFinal = moment(item.data_final);
+          if(((mDateFinal.month()) <= (date.month()) && mDateFinal.year() <= date.year())){
+            return false;
+          }else{
+            return true;
+          }
+        }
       }
     });
 
     return array;
+  }
+
+  edit(outgoing){
+    this.nav.push(AddOutgoingPage, {outgoing: outgoing});
   }
 
   deleteOutgoing(outgoing, index){

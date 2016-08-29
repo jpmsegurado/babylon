@@ -32,7 +32,7 @@
   </div>
   <div class="content">
     <ion-list *ngIf="getFilteredOutgoings(outgoings, date, month, year, actualYear ).length > 0">
-      <ion-item *ngFor="let outgoing of getFilteredOutgoings(outgoings, date, month, year, actualYear); let i = index" (click)="deleteOutgoing(outgoing, i)">
+      <ion-item *ngFor="let outgoing of getFilteredOutgoings(outgoings, date, month, year, actualYear); let i = index" (click)="edit(outgoing, i)">
         <ion-icon item-left [name]="getIcon(outgoing)"></ion-icon>
         <h2>{{outgoing.descricao}} - R${{accounting.formatMoney(outgoing.valor, "", 2, ".", ",")}}</h2>
         <p>{{formatData(outgoing.data)}}</p>

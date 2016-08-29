@@ -1,4 +1,9 @@
 .add-outgoing {
+
+  p{
+    color: color($colors, gray);
+  }
+
   background-color: color($colors, light);
   ion-item ion-input * {
     text-align: right;

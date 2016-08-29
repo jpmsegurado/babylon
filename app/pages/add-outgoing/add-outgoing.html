@@ -8,6 +8,15 @@
 
   <ion-navbar vermelho>
     <ion-title>Nova despesa</ion-title>
+
+    <ion-buttons end *ngIf="!!params.get('outgoing')">
+      <button (click)="deletar()" [disabled]="deleting">
+        Deletar
+        <ion-spinner *ngIf="deleting"></ion-spinner>
+        <ion-icon *ngIf="!deleting" name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -18,7 +27,7 @@
     <ion-list>
       <ion-item>
         <ion-label>Data</ion-label>
-        <ion-input type="date" ngControl="data"></ion-input>
+        <ion-datetime pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" ngControl="data"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Categoria</ion-label>
@@ -30,6 +39,7 @@
           <ion-option value="4">Saúde</ion-option>
           <ion-option value="5">Alimentação</ion-option>
           <ion-option value="6">Outros</ion-option>
+          <ion-option value="7">Parcela/Recorrente</ion-option>
         </ion-select>
       </ion-item>
       <ion-item class="valor">
@@ -40,12 +50,22 @@
         <ion-label>Descrição</ion-label>
         <ion-input type="text" ngControl="descricao"></ion-input>
       </ion-item>
+      <ion-item *ngIf="outgoing.value.tipo == '7'">
+        <ion-label>Nº de parcelas/recorrência</ion-label>
+        <ion-input type="number" [(ngModel)]="parcelas"></ion-input>
+      </ion-item>
     </ion-list>
 
+    <div *ngIf="outgoing.value.tipo == '7'">
+      <p class="text-center">
+        As parcelas serão cadastradas todos dia {{getDia(outgoing.value.data)}}
+      </p>
+    </div>
+
     <div padding>
-      <button full darkred type="submit" [disabled]="loading">
+      <button full darkred type="submit" [disabled]="loading || deleting">
         Adicionar
-        <ion-spinner *ngIf="loading"></ion-spinner>
+        <ion-spinner *ngIf="loading || deleting"></ion-spinner>
       </button>
     </div>
   </form>

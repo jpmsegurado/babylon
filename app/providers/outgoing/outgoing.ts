@@ -21,7 +21,7 @@ export class Outgoing {
     private firebase: Firebase
   ) {
 
-      this._db = new PouchDB('outgoing', {adapter: 'websql'});
+      this._db = new PouchDB('outgoing');
       // this.removeAll();
       this._results;
 
@@ -70,7 +70,15 @@ export class Outgoing {
     }
 
     update(result) {
-      return Observable.fromPromise(this._db.put(result));
+      return Observable.fromPromise(this.local.get('facebook')).switchMap((resp: any) => {
+        console.log(resp);
+        if(JSON.parse(resp)){
+          let userID = JSON.parse(resp).authResponse.userID;
+          return Observable.fromPromise(this.firebase.ref(`users/${userID}/outgoings/${result.key}`).update(result)).switchMap((res: any) => {
+            return Observable.fromPromise(this._db.put(result));
+          });
+        }
+      });
     }
 
     deleteOnline(result) {

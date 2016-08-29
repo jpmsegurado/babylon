@@ -76,7 +76,15 @@ export class Income {
     }
 
     update(result) {
-      return Observable.fromPromise(this._db.put(result));
+      return Observable.fromPromise(this.local.get('facebook')).switchMap((resp: any) => {
+        console.log(resp);
+        if(JSON.parse(resp)){
+          let userID = JSON.parse(resp).authResponse.userID;
+          return Observable.fromPromise(this.firebase.ref(`users/${userID}/incomes/${result.key}`).update(result)).switchMap((res: any) => {
+            return Observable.fromPromise(this._db.put(result));
+          });
+        }
+      });
     }
 
     delete(result) {

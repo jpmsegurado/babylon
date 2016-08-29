@@ -90,6 +90,10 @@ export class IncomesPage {
     this.nav.present(alert);
   }
 
+  edit(income){
+    this.nav.push(AddIncomePage, {income: income});
+  }
+
   getFilteredIncomes(incomes, date, month, year, actualYear){
     let array = [];
     array = incomes.filter((item) => {

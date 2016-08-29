@@ -39,14 +39,21 @@ export class User {
           let outgoings = res.val().outgoings;
           if(incomes){
             for(let income in incomes) {
-              promises.push(this.IncomesService.simplyAdd(incomes[income]));
+              let obj = _.extend(incomes[income]);
+              obj.key = income;
+              promises.push(this.IncomesService.simplyAdd(obj));
             }
           }
           if(outgoings){
             for(let outgoing in outgoings) {
-              promises.push(this.OutgoingsService.simplyAdd(outgoings[outgoing]));
+              let obj = _.extend(outgoings[outgoing]);
+              obj.key = outgoing;
+              promises.push(this.OutgoingsService.simplyAdd(obj));
             }
           }
+
+          console.log(outgoings);
+          console.log(incomes);
         }catch(e){
           callback([]);
         }
