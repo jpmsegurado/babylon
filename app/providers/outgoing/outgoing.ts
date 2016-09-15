@@ -21,7 +21,7 @@ export class Outgoing {
     private firebase: Firebase
   ) {
 
-      this._db = new PouchDB('outgoing');
+      this._db = new PouchDB('outgoing', {adapter: 'websql'});
       // this.removeAll();
       this._results;
 

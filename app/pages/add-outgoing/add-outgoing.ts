@@ -38,7 +38,7 @@ export class AddOutgoingPage {
         descricao: new Control('', Validators.required),
         valor: new Control('', Validators.required),
         data: new Control(moment().toISOString(), Validators.required),
-        tipo: new Control('7', Validators.required)
+        tipo: new Control('0', Validators.required)
       });
     }else{
       let outgoing = params.get('outgoing');
@@ -171,34 +171,34 @@ export class AddOutgoingPage {
         console.log(outgoing.value);
       }
 
-      // this.loading = true;
-      // if(!this.params.get('outgoing')){
-      //   outgoing.value.valor = (parseFloat(outgoing.value.valor.slice(3, outgoing.value.valor.length).replace(',', '.')) * 10).toFixed(2);
-      //   this.OutgoingService.add(outgoing.value).subscribe((res) => {
-      //     this.nav.pop();
-      //     this.loading = false;
-      //   }, () => {
-      //     this.loading = false;
-      //   });
-      // }else{
-      //   if(!!outgoing.controls.valor.dirty){
-      //     outgoing.value.valor = (parseFloat(outgoing.value.valor.slice(3, outgoing.value.valor.length).replace(',', '.')) * 10).toFixed(2);
-      //   }else{
-      //     outgoing.value.valor = (parseFloat(outgoing.value.valor.slice(3, outgoing.value.valor.length).replace(',', '.'))).toFixed(2);
-      //   }
-      //   let obj = _.extend(outgoing.value);
-      //   obj.key = this.params.get('outgoing').key;
-      //   obj._id = this.params.get('outgoing')._id;
-      //   obj._rev = this.params.get('outgoing')._rev;
-      //   console.log(obj);
-      //   console.log(this.params.get('outgoing'));
-      //   this.OutgoingService.update(outgoing.value).subscribe((res) => {
-      //     this.nav.pop();
-      //     this.loading = false;
-      //   }, () => {
-      //     this.loading = false;
-      //   });
-      // }
+      this.loading = true;
+      if(!this.params.get('outgoing')){
+        outgoing.value.valor = (parseFloat(outgoing.value.valor.slice(3, outgoing.value.valor.length).replace(',', '.')) * 10).toFixed(2);
+        this.OutgoingService.add(outgoing.value).subscribe((res) => {
+          this.nav.pop();
+          this.loading = false;
+        }, () => {
+          this.loading = false;
+        });
+      }else{
+        if(!!outgoing.controls.valor.dirty){
+          outgoing.value.valor = (parseFloat(outgoing.value.valor.slice(3, outgoing.value.valor.length).replace(',', '.')) * 10).toFixed(2);
+        }else{
+          outgoing.value.valor = (parseFloat(outgoing.value.valor.slice(3, outgoing.value.valor.length).replace(',', '.'))).toFixed(2);
+        }
+        let obj = _.extend(outgoing.value);
+        obj.key = this.params.get('outgoing').key;
+        obj._id = this.params.get('outgoing')._id;
+        obj._rev = this.params.get('outgoing')._rev;
+        console.log(obj);
+        console.log(this.params.get('outgoing'));
+        this.OutgoingService.update(outgoing.value).subscribe((res) => {
+          this.nav.pop();
+          this.loading = false;
+        }, () => {
+          this.loading = false;
+        });
+      }
     }catch(e){
       this.loading = false;
       console.log(e);
